@@ -1,0 +1,169 @@
+@use "sass:math";
+@import "fonts";
+
+@mixin font ($font_name, $file_name, $weight, $style) {
+
+    @font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff") url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+    
+}
+
+@mixin div-same-size-as-background-img($url, $width, $height) {
+	background-image: url($url);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 100%;
+	height: 0;
+	padding-top: math.div($height, $width) * 100%;
+  }
+
+$breakpoint-small_desktop: 992px;
+$breakpoint-tablet: 785px;
+
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+.main_screen {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	height: 100vh;
+	max-height: 1080px;
+	min-height: 500px;
+	padding: 0 calc(10px + (171 - 10) * ((100vw - 320px) / (1920 - 320)));
+	padding-top: calc(10px + (38 - 10) * ((100vw - 320px) / (1920 - 320)));
+	font-family: 'Montserrat', sans-serif;
+	background-color: #000000;
+	color: rgba(255, 255, 255, 0.36);
+}
+
+.container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	justify-content: space-between;
+
+	@media screen and (max-width: $breakpoint-tablet) {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	  }
+}
+
+.logo {
+	@include div-same-size-as-background-img('../img/logo.png', 132, 64);
+	background-size: contain;
+	max-width: 112px;
+}
+
+h1{
+display: inline-block;
+position: relative;
+left: -10px;
+font-size: calc(20px + (144 - 20) * ((100vw - 320px) / (1920 - 320)));
+line-height: calc(28px + (176 - 28) * ((100vw - 320px) / (1920 - 320)));
+margin-top: 50px;
+}
+
+h3{
+	font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1920 - 320)));
+	line-height: calc(18px + (22 - 18) * ((100vw - 320px) / (1920 - 320)));
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+a {
+display: inline-block;
+padding: 8px calc(20px + (70 - 20) * ((100vw - 320px) / (1920 - 320)));
+border: 2px solid rgba(255, 255, 255, 0.6);
+border-radius: 42px;
+color: rgba(255, 255, 255, 0.6); 
+transition: all 0.8s ease;
+
+&:hover {
+border-color: #ffffff;
+color: #ffffff;
+}
+
+}
+
+p {
+	position: absolute;
+	bottom: 2%;
+}
+
+.left {
+	flex: 0 1 33%;	
+	@media screen and (max-width: $breakpoint-tablet) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex: 0 1 40%;
+	  }
+}
+
+.right {
+	flex: 0 1 65%;
+	@media screen and (max-width: $breakpoint-tablet) {
+		width: 300px;
+		flex: 0 1 55%;
+	  }
+}
+
+.main_screen_image{
+	@include div-same-size-as-background-img('../img/car_image.png', 1205, 1407);
+	background-size: contain;
+	background-position: top;
+
+	@media screen and (max-width: $breakpoint-small_desktop) {
+		background-position: center;
+	  }
+	  @media screen and (max-width: $breakpoint-tablet) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex: 0 1 40%;
+	  }
+}
