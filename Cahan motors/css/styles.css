@@ -114,8 +114,6 @@ h6 {
 }
 
 .logo {
-  position: relative;
-  left: 10px;
   background-image: url("../img/logo.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -128,6 +126,8 @@ h6 {
 }
 
 h1 {
+  position: relative;
+  left: -10px;
   display: inline-block;
   font-size: calc(20px + 124 * (100vw - 320px) / 1600);
   line-height: calc(28px + 148 * (100vw - 320px) / 1600);

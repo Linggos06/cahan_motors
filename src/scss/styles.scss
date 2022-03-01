@@ -92,14 +92,14 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 
 .logo {
-	position: relative;
-    left: 10px;
 	@include div-same-size-as-background-img('../img/logo.png', 132, 64);
 	background-size: contain;
 	max-width: 112px;
 }
 
 h1{
+position: relative;
+left: -10px;
 display: inline-block;
 font-size: calc(20px + (144 - 20) * ((100vw - 320px) / (1920 - 320)));
 line-height: calc(28px + (176 - 28) * ((100vw - 320px) / (1920 - 320)));
